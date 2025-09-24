@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:rotation="0"
+    android:rotationY="0"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/perro"
+        android:adjustViewBounds="true"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:padding="24dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="@string/Texto_Principal"
+        />
+
+    <EditText
+        android:id="@+id/etedad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/introduce_tu_edad"
+        android:gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:inputType="number"
+        android:paddingLeft="16dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:backgroundTint="@color/design_default_color_primary_variant"
+        android:text="@string/calcular"
+        android:textColorLink="#673AB7" />
+
+    <TextView
+        android:id="@+id/tvRespuesta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        tools:text="Si fueras un perro, tendrias 1200 años"
+        android:textSize="22dp"
+
+        android:gravity="center"
+        />
+
+</LinearLayout>
+
+
