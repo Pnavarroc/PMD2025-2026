@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this,"No se puede dividir entre 0", Toast.LENGTH_LONG).show();
                 }else num1/num2;
             }
-            else -> 0
+            else -> 0.0
         }
         binding.TvResultado.text="El resultado de la operacion es: $resul"
     }
