@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    //4 - Añadimos el plugin parcelize que es para serializar.
+    id("kotlin-parcelize")
 }
 
 android {
