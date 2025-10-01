@@ -2,17 +2,22 @@ package org.iesch.a02_registro_superheroes
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.a02_registro_superheroes.Detalle.DetalleHeroeActivity
 import org.iesch.a02_registro_superheroes.Modelo.SuperHeroe
 import org.iesch.a02_registro_superheroes.databinding.ActivityRegisterBinding
+import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,11 +27,18 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var heroImage: ImageView
     private var heroBitmap: Bitmap?=null;
-    private val getContent =registerForActivityResult(ActivityResultContracts.TakePicturePreview()){
+    //Cambiamos el TakePicturePreview por takePicture
+    private var picturePath="";
+    private val getContent =registerForActivityResult(ActivityResultContracts.TakePicture()){
         //Esto nos va adevolver un objeto de tipo bitMap(Que es para las fotos)
-        bitmap ->
-            heroBitmap=bitmap
-            heroImage.setImageBitmap(heroBitmap)
+        //Ahora en lugar de un bitmas nos va a devolver un booleano si la toma de la foto es exitosa
+        success ->
+        if ( success && picturePath.isNotEmpty()){
+            //Cualquier imagen del directorio de imagenes la podemos convertir en un objeto bitmap
+            heroBitmap = BitmapFactory.decodeFile(picturePath);
+            // Pintamos la imagen en el cuadradito
+            heroImage.setImageBitmap(heroBitmap);
+        }
     }
 
 
@@ -61,8 +73,33 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun openCamera() {
         //11 - Abrimos la camara llamando al getContent launch
-        getContent.launch(null)
+        //Ahora aquí debemos crear un path temporal para guardar la imagen
+        val imageFile =createImageFile()
+        //Ahora ya tenemos el File, pero lo que necesitamos es el uri
+        //FileProvider lo que hace es compartir el file con otras aplicaciones de forma segura.
+        val uri = FileProvider.getUriForFile(
+            this,
+            "${applicationContext.packageName}.provider",
+            imageFile
+        )
 
+        //Como estamos por encima de la SDK 24 obtendremos el uri a través de FileProvider
+        //Ahora le pasamos el uri a la funcion launcher
+        getContent.launch(uri)
+
+
+    }
+
+    private fun createImageFile() : File{
+        //Esta funcion crea un file y del file recuperamos el uri que es la direccion de la foto que acabamos de hacer.
+        val  fileName = "superhero_image"
+        //Esto sera el directorio donde vamos a almacenar la imagen. Por defecto es DIRECTORY_PICTURES.
+        val fileDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        //Creamos nuestro file y aqui nos pide el nombre del file, el formato y el directorio.
+        val imageFile = File.createTempFile(fileName,".jpg",fileDirectory)
+        //Ahora ya podemos guardar el path de la variable real.
+        picturePath=imageFile.absolutePath
+        return imageFile
     }
 
     private fun irADetalleHeroe(superHeroe: SuperHeroe){
@@ -76,8 +113,8 @@ class RegisterActivity : AppCompatActivity() {
         intent.putExtra(DetalleHeroeActivity.POWER,power)*/
         intent.putExtra(DetalleHeroeActivity.SUPERHEROE_KEY,superHeroe)
         //12 - Aqui añado el objeto bitmap al intent
-
-        intent.putExtra(DetalleHeroeActivity.FOTO_KEY,heroImage.drawable.toBitmap())
+        //Pasamos solamente el picturePath
+        intent.putExtra(DetalleHeroeActivity.FOTO_KEY,picturePath)
 
         startActivity(intent)
     }

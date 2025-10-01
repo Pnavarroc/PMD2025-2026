@@ -1,6 +1,7 @@
 package org.iesch.a02_registro_superheroes.Detalle
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +16,10 @@ class DetalleHeroeActivity : AppCompatActivity() {
     //3 - Para no cometer equivocaciones en las keys, me creo un companion object
     //un companion object es un objeto que pertenece a una clase de kotlin y permite definir miembros estaticos.
     companion object{
-        const val  HERO_NAME ="heroName";
+        /*const val  HERO_NAME ="heroName";
         const val ALTER_EGO= "alterEgo";
         const val BIO= "bio";
-        const val POWER = "power";
+        const val POWER = "power";*/
 
         const val SUPERHEROE_KEY= "super_heroe_p"
 
@@ -45,8 +46,11 @@ class DetalleHeroeActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             intent.getParcelableExtra<SuperHeroe>(SUPERHEROE_KEY)
         }
-        val bitmap =bundle.getParcelable<Bitmap>(FOTO_KEY)!!
-        //
+        //val bitmap =bundle.getParcelable<Bitmap>(FOTO_KEY)!!
+        //Eliminamos el bitmap y obtenemos el String del directorio de ese bitmap
+        val bitmapDirectory = bundle.getString(FOTO_KEY)
+        val bitmap= BitmapFactory.decodeFile(bitmapDirectory)
+
 
 
 
@@ -66,6 +70,8 @@ class DetalleHeroeActivity : AppCompatActivity() {
 
 
         //14 - Asigno la imagen a la imageview
-        binding.imageView.setImageBitmap(bitmap)
+        if ( bitmap!=null ){
+            binding.imageView.setImageBitmap(bitmap)
+        }
     }
 }
