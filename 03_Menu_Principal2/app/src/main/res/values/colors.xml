@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pollo">#37c9BB</color>
+    <color name="salmon">#FBE6DD</color>
+    <color name="naranja">#FF9D43</color>
+    <color name="rosa">#F33095</color>
+    <color name="azul">#389EF2</color>
+    <color name="blancoGrisaceo">#FFF2EC</color>
+
+
 </resources>
