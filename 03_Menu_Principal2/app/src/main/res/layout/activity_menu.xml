@@ -218,12 +218,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-
+                    android:id="@+id/btn_razas"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:layout_marginStart="12dp"
-
-
                     android:layout_weight="0.5"
                     android:background="@drawable/btn_background_4">
 
@@ -250,7 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="API Rest"
+                        android:text="API Rest Razas"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"

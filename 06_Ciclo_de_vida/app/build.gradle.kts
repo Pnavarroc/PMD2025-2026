@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.iesch.a03_menu_principal"
+    namespace = "org.iesch.a06_ciclo_de_vida"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.iesch.a03_menu_principal"
+        applicationId = "org.iesch.a06_ciclo_de_vida"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -33,21 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
-        viewBinding=true
-    }
+
 }
 
 dependencies {
-
-
-    //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    //Picasso
-    implementation("com.squareup.picasso:picasso:2.8")
-    //Corrutinas
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
