@@ -13,7 +13,7 @@ interface ApiService {
 
 
      @GET
-     fun getPerrosPorRaza( @Url url: String ) : Response<DogsResponse>
+     suspend fun getPerrosPorRaza( @Url url: String ) : Response<DogsResponse>
 
 
 
