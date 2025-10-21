@@ -8,6 +8,15 @@
     <color name="rosa">#F33095</color>
     <color name="azul">#389EF2</color>
     <color name="blancoGrisaceo">#FFF2EC</color>
+    <color name="amarillo">#BCAE2B</color>
+    <color name="morado">#673AB7</color>
+
+
+
+    <color name="bg_home_fragment">#9CE29B</color>
+    <color name="bg_profile_fragment">#A08BD3</color>
+    <color name="bg_settings_fragment">#FB85AC</color>
+    <color name="bg_bottom_menu">#489CE0</color>
 
 
 </resources>
