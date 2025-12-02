@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.iesch.a03_menu_principal.R
-import org.iesch.a03_menu_principal.databinding.FragmentHomeBinding
+
 
 
 class HomeFragment : Fragment() {

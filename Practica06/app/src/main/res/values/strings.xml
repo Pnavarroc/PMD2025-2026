@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Practica06</string>
+    <string name="tv_titulo">Practica 5</string>
+    <string name="et_email">Email</string>
+    <string name="et_contraseña">Contraseña</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="Texto_Principal">¿Qué edad tienes?</string>
+    <string name="introduce_tu_edad">Introduce tu edad:</string>
+    <string name="calcular">Calcular</string>
+    <string name="resulta_format">Si fueras un perro tendrias %d</string>
+    <string name="toastText">Debes introducir un valor numérico</string>
+    <string name="titulo">Preguntas</string>
+    <string name="numPreguntas">1/3</string>
+    <string name="pregunta1">Resuelve la siguiente ecuacion de 1er grado</string>
+    <string name="operacion">10 y = 70</string>
+    <string name="opcion">Elige entre una de las opciones:</string>
+    <string name="y_7">y = 7</string>
+    <string name="y_23">y = 23</string>
+    <string name="y_yoquese">No tengo ni idea</string>
+    <string name="enviar">Enviar</string>
+    <string name="toast_no_opcion">Debes seleccionar una opción</string>
+    <string name="correcto">¡Correcto!</string>
+    <string name="incorrecto">¡Incorrecto!</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="empezar_de_0">Volver a empezar</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="texto_final">¡Has terminado todas las preguntas!</string>
+
+    <string name="mi_calculadora">Mi Calculadora</string>
+    <string name="welcome">Bienvenidos a mi APP Calculadora</string>
+    <string name="enter_first">Introduzca el primer número:</string>
+    <string name="enter_second">Introduzca el segundo número:</string>
+    <string name="hint_num1">Número 1</string>
+    <string name="hint_num2">Número 2</string>
+    <string name="sum">Sumar</string>
+    <string name="rest">Restar</string>
+    <string name="multi">Multi</string>
+    <string name="div">Dividir</string>
+    <string name="result">El resultado de la operación es:</string>
+
+
+    <string name="mapbox_access_token">pk.eyJ1IjoicG5hdmFycm9jIiwiYSI6ImNtaTIyNjRmYzE1Zmwya3F6NWhpeHdiYnMifQ.bzVFbUTk4RLz_ccupdG31w</string>
+
+    <string name="default_web_client_id">691313450900-v0qbep698aok5huio212eg5bhgutq1ul.apps.googleusercontent.com</string>
+
+
+    <string name="sha1"> 85:DD:C8:4A:7C:78:B6:CD:76:49:6B:0B:0D:0A:70:8C:26:86:5D:71</string>
+
+</resources>

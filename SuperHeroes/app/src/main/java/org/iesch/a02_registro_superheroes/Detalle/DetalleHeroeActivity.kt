@@ -1,6 +1,6 @@
 package org.iesch.a02_registro_superheroes.Detalle
 
-import android.graphics.Bitmap
+
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -36,6 +36,8 @@ class DetalleHeroeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         val bundle=intent.extras!!
         //8 - Recibimos el Objeto superheroe del intent
         val superHeroe=if (android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.TIRAMISU){

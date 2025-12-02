@@ -5,13 +5,13 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
+
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.core.graphics.drawable.toBitmap
+
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import org.iesch.a02_registro_superheroes.Detalle.DetalleHeroeActivity
@@ -53,6 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         binding.btnGuardar.setOnClickListener {
             // Nos creamos las variables necesarias para pasarlas al indent
             val superHeroName = binding.etHeroName.text.toString()

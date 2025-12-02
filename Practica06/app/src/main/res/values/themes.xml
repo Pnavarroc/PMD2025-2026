@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme SOLUCIONADA -->
+    <style name="Base.Theme.Practica06" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here -->
+    </style>
+
+    <style name="Theme.Practica06" parent="Base.Theme.Practica06" />
+
+    <!--Splash Screen Theme-->
+    <style name="Splash_Screen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">3000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Practica06</item>
+    </style>
+
+    <!--El resto de tus temas AppCompat están perfectos porque heredan de AppCompat-->
+    <style name="Edad_Canina" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/verde</item>
+    </style>
+
+    <style name="registro_superheroes" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/naranja</item>
+    </style>
+
+    <style name="api_rest_razas" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/azul</item>
+    </style>
+
+    <style name="menu_fragmentos" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/amarillo</item>
+    </style>
+
+    <style name="Herramientas" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/morado</item>
+    </style>
+
+    <style name="Mapas" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/violeta</item>
+    </style>
+
+</resources>

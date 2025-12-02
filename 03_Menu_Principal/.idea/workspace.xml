@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="372c9a44-af13-4a6c-a2d0-abaa6156d12d" name="Changes" comment="" />
+    <list default="true" id="372c9a44-af13-4a6c-a2d0-abaa6156d12d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../03_Menu_Principal2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../03_Menu_Principal2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/Detalle/DetalleHeroeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/Detalle/DetalleHeroeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/Modelo/SuperHeroe.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/Modelo/SuperHeroe.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperHeroes/app/src/main/java/org/iesch/a02_registro_superheroes/RegisterActivity.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="34QqLwyOlE5l7a27Bc498gdkgp5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,7 +39,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/dam2/Desktop/PMD2025-2026/03_Menu_Principal"
+    "last_opened_file_path": "C:/Users/pablo/OneDrive/Escritorio/PMD2025-2026/03_Menu_Principal"
   }
 }]]></component>
   <component name="TaskManager">

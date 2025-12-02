@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "970944880784",
+    "project_id": "practicarparaexamenev1",
+    "storage_bucket": "practicarparaexamenev1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970944880784:android:0cc2e75aa850f73665b815",
+        "android_client_info": {
+          "package_name": "iesch.org.examenprueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdgVGJCJFy0S0fblGdzP7dkKRfQu9fULQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

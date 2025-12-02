@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "691313450900",
+    "project_id": "practica06-31a95",
+    "storage_bucket": "practica06-31a95.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691313450900:android:fd67b6ec94884b9cba3981",
+        "android_client_info": {
+          "package_name": "iesch.org.practica06"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691313450900-hs96d58u7def1rp92figc8c30qk12q0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "iesch.org.practica06",
+            "certificate_hash": "4a6ce7d5001dcf1eaf42d71127c4543ae1bb3090"
+          }
+        },
+        {
+          "client_id": "691313450900-v0qbep698aok5huio212eg5bhgutq1ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhXhVFLKutdqwkyUnqDhxo2C-mq4eoXbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691313450900-v0qbep698aok5huio212eg5bhgutq1ul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -36,6 +36,7 @@ class MenuActivity : AppCompatActivity() {
 
 
     }
+
 }
 
 private fun MenuActivity.irARazasActivity() {

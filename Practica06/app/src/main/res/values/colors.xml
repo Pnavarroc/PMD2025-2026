@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="texto_principal">#FF000000</color>
+    <!-- Colores del menu-->
+    <color name="naranja">#FF9D43</color>
+    <color name="pollo">#37c9BB</color>
+    <color name="rosa">#F33095</color>
+    <color name="azul">#389EF2</color>
+    <color name="amarillo">#BCAE2B</color>
+    <color name="morado">#673AB7</color>
+    <color name="rojo">#F47278</color>
+    <color name="violeta">#A279ED</color>
+    <color name="my_dark_primary">#824E00</color>
+    <color name="btn_LogOut">#4F0000</color>
+
+
+    <!--Color de splashScreen-->
+    <color name="splash_background">#FBE6DD</color>
+
+    <!--
+    <color name="titulo_edad">#FFFFFFFF</color>-->
+
+
+
+
+    <color name="verde">#009688</color>
+    <color name="verdeOscuro">#0E655A</color>
+    <color name="salmon">#F2BFA2</color>
+    <color name="salmonOscuro">#B08266</color>
+    <color name="yellow">#E5D220</color>
+    <color name="salmon2">#FBE6DD</color>
+    <color name="blancoGrisaceo">#FFF2EC</color>
+    <color name="purple">#7956BC</color>
+
+
+
+    <!--Estos colores son para los fragments-->
+
+    <color name="bg_home_fragment">#9CE29B</color>
+    <color name="bg_profile_fragment">#A08BD3</color>
+    <color name="bg_settings_fragment">#FB85AC</color>
+    <color name="bg_bottom_menu">#489CE0</color>
+
+
+</resources>
