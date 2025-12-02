@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenPrueba">
         <activity
+            android:name=".Datastore.DataStoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".firestore.FirestoreActivity"
             android:exported="false" />
         <activity

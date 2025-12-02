@@ -3,14 +3,12 @@ package iesch.org.examenprueba
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import iesch.org.examenprueba.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
@@ -21,9 +19,8 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Si ya hay usuario logueado → saltamos a Home
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
+        // Si ya hay una sesión iniciada, ir directo al home
+        if (auth.currentUser != null) {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
@@ -49,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
                 } else {

@@ -57,6 +57,20 @@ dependencies {
     //Corrutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
+    //FirebaseFireStore
+    implementation ("com.google.firebase:firebase-firestore")
+
+
+
+
+    //datastore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+
+
+
+
+
     // Android libs
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

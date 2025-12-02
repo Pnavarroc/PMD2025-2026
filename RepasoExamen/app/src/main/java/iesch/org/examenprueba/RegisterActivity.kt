@@ -3,17 +3,16 @@ package iesch.org.examenprueba
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import iesch.org.examenprueba.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +35,35 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
+        // 1️⃣ CREAR USUARIO EN AUTH
         auth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
+
+                    val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
+
+                    // 2️⃣ OBJETO QUE SE GUARDARÁ EN FIRESTORE
+                    val nuevoUsuario = hashMapOf(
+                        "id" to userId,
+                        "email" to email,
+                        "creado" to System.currentTimeMillis()
+                    )
+
+                    // 3️⃣ GUARDAR EN LA COLECCIÓN "usuarios"
+                    db.collection("usuarios")
+                        .document(userId)
+                        .set(nuevoUsuario)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Usuario registrado 👍", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Error guardando en Firestore", Toast.LENGTH_SHORT).show()
+                        }
+
                 } else {
-                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Error al registrar", Toast.LENGTH_SHORT).show()
                 }
             }
     }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import iesch.org.examenprueba.Datastore.DataStoreActivity
 import iesch.org.examenprueba.api.ApiActivity
 import iesch.org.examenprueba.databinding.ActivityHomeBinding
 import iesch.org.examenprueba.firestore.FirestoreActivity
@@ -33,8 +34,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // 3️⃣ BOTÓN FIRESTORE
-        binding.btnFirestore.setOnClickListener {
-            startActivity(Intent(this, FirestoreActivity::class.java))
+        binding.btnDataStore.setOnClickListener {
+            startActivity(Intent(this, DataStoreActivity::class.java))
         }
 
         // 4️⃣ CERRAR SESIÓN
