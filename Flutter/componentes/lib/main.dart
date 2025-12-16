@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         '/alertas': (context) => AlertasScreen(),
         '/sliders': (context) => SlidersScreen(),
         '/animaciones': (context) => AnimacionesScreen(),
-        '/snackBar': (context) => ProgressScreen(),
+        '/snackbar': (context) => ProgressScreen(),
+        '/formulario': (context) => FormularioScreen(),
       },
     );
   }

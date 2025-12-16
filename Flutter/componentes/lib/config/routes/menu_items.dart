@@ -49,15 +49,21 @@ final menuItems = <MenuItem>[
     icono: Icons.check_box,
   ),
   MenuItem(
-    titulo: 'Animaciones screen',
-    subtitulo: 'Un simple ejemplo de animaciones',
+    titulo: 'Animaciones',
+    subtitulo: 'Un simple ejemplo de animaciones en Flutter',
     link: '/animaciones',
     icono: Icons.animation,
   ),
   MenuItem(
     titulo: 'Progress Indicator & SnackBar',
     subtitulo: 'Un simple ejemplo de Indicators y SnackBar',
-    link: '/snackBar',
+    link: '/snackbar',
     icono: Icons.refresh_rounded,
+  ),
+  MenuItem(
+    titulo: 'Formularios',
+    subtitulo: 'Un simple ejemplo de Formularios',
+    link: '/formulario',
+    icono: Icons.format_align_center,
   ),
 ];
