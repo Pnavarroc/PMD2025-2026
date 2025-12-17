@@ -16,7 +16,7 @@ class AppTheme {
   AppTheme({this.colorSeleccionado = 0 });
 
   ThemeData obtenerTema() => ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     colorSchemeSeed: listaDeColores[colorSeleccionado],
 
     appBarTheme: AppBarTheme(

@@ -1,45 +1,61 @@
 import 'package:flutter/material.dart';
 
-class TextFromPersonalizado extends StatelessWidget {
+class TextFormPersonalizado extends StatelessWidget {
+
   final String? hintText;
   final String? labelText;
-  final String? helperTrext;
+  final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
 
-  const TextFromPersonalizado({
-    super.key,
-    this.hintText,
-    this.labelText,
-    this.helperTrext,
-    this.icon,
-    this.suffixIcon,
+  final TextInputType? keyboardType;
+  final bool obscureText;
+
+  final String formPropiedad;
+  final Map<String, String> formValues;
+
+  const TextFormPersonalizado({
+    super.key, 
+    this.hintText, 
+    this.labelText, 
+    this.helperText, 
+    this.icon, 
+    this.suffixIcon, 
+    this.keyboardType, 
+    this.obscureText = false, 
+    required this.formPropiedad, 
+    required this.formValues,
   });
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // initialValue: 'Pablo N.',
+      //initialValue: 'Alberto R.',
       autofocus: true,
       textCapitalization: TextCapitalization.words,
-      onChanged: (value) {
-        print(value);
-      },
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      onChanged: ( value ){
+        formValues[formPropiedad] = value;
+      } ,
       validator: (value) {
-        return value!.length < 5 ? 'Mínimo 5 caracteres' : null;
+        
+          return value!.length < 5 ? 'Mínimo 5 caracteres' : null;
+        
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: hintText,
         labelText: labelText,
-        helperText: helperTrext,
-        //counterText: "3 caracteres",
+        helperText: helperText,
+        //counterText: '3 caracteres',
         suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
-        //prefixIcon: Icon(Icons.verified_user_outlined),
-        icon: icon != null ? Icon(icon) : null,
+        //prefixIcon: Icon(Icons.verified_user_outlined)
+        icon: icon != null ? Icon(icon) : null ,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+          borderRadius: BorderRadius.circular(10),
+        )
       ),
     );
   }

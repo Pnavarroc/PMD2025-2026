@@ -11,19 +11,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(colorSeleccionado: 2).obtenerTema(),
+      theme: AppTheme( colorSeleccionado: 5).obtenerTema(),
       // home: HomeScreen()
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeScreen(),
-        '/botones': (context) => BotonesScreen(),
-        '/listas': (context) => ListasScreen(),
-        '/tarjetas': (context) => TarjetasScreen(),
-        '/alertas': (context) => AlertasScreen(),
-        '/sliders': (context) => SlidersScreen(),
-        '/animaciones': (context) => AnimacionesScreen(),
-        '/snackbar': (context) => ProgressScreen(),
-        '/formulario': (context) => FormularioScreen(),
+        '/' : (context)=> HomeScreen(),
+        '/botones' : (context)=> BotonesScreen(),
+        '/listas' : (context)=> ListasScreen(),
+        '/tarjetas' : (context)=> TarjetasScreen(),
+        '/alertas'  : (context)=> AlertasScreen(),
+        '/sliders'  : (context)=> SlidersScreen(),
+        '/animaciones' : (context)=> AnimacionesScreen(),
+        '/snackbar' : (context)=> ProgressScreen(),
+        '/formulario' : (context)=> FormularioScreen()
       },
     );
   }
