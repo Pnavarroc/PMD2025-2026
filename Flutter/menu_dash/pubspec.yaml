@@ -7,8 +7,10 @@ environment:
   sdk: ^3.10.3
 
 dependencies:
+  dio: ^5.9.0
   flutter:
     sdk: flutter
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +19,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+assets:
+  - assets/
