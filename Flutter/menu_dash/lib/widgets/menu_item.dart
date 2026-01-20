@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:menu_dash/widgets/option_menu_item.dart';
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({super.key, required OptionMenuItem opcion})
-    : _opcion = opcion;
+  const MenuItem({
+    super.key,
+    required OptionMenuItem opcion,
+  }) : _opcion = opcion;
 
   final OptionMenuItem _opcion;
 
@@ -17,14 +19,17 @@ class MenuItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(_opcion.icono, color: Colors.white, size: 60),
-            SizedBox(height: 15),
-            Text(
-              _opcion.texto,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            Icon(_opcion.icono, color: Colors.white, size: 65,),
+            SizedBox(height: 15,),
+            Text(_opcion.texto,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500
+                ),
+            )
           ],
-        ),
+        )
       ),
     );
   }

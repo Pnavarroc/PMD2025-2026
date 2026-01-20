@@ -2,33 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:menu_dash/services/jsonplaceholder_services.dart';
 
 class ApiJsonPlaceUsersScreen extends StatefulWidget {
+   
   const ApiJsonPlaceUsersScreen({Key? key}) : super(key: key);
 
   @override
-  State<ApiJsonPlaceUsersScreen> createState() =>
-      _ApiJsonPlaceUsersScreenState();
+  State<ApiJsonPlaceUsersScreen> createState() => _ApiJsonPlaceUsersScreenState();
 }
 
 class _ApiJsonPlaceUsersScreenState extends State<ApiJsonPlaceUsersScreen> {
+
   late Future<List<dynamic>> _futureUsers;
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    //_futureUsers = JsonplaceholderAPIService.fetchUsersWithHttp();
-    _futureUsers = JsonplaceholderAPIService.fetchUsersWithDio();
+    //_futureUsers = JsonPlaceHolderAPIService.fetchUsersWithHttp();
+    _futureUsers = JsonPlaceHolderAPIService.fetchUsersWithDio();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Usuarios API'),), 
       body: FutureBuilder(
-        future: _futureUsers,
+        future: _futureUsers, 
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator.adaptive());
+          if (snapshot.connectionState == ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator.adaptive(),);
           } else if (snapshot.hasError) {
-            return Text("Eres un payo: ${snapshot.error}");
+            return Text('Error: ${snapshot.error}');
           } else {
             final usuarios = snapshot.data!;
             return ListView.builder(
@@ -40,10 +43,11 @@ class _ApiJsonPlaceUsersScreenState extends State<ApiJsonPlaceUsersScreen> {
                   subtitle: Text(usuario['address']['street']),
                 );
               },
-            );
+              );
           }
         },
-      ),
+        )
+
     );
   }
 }

@@ -8,38 +8,64 @@ class ListaPersonajesWidget extends StatefulWidget {
 }
 
 class _ListaPersonajesWidgetState extends State<ListaPersonajesWidget> {
+
   final tituloStyleText = TextStyle(
-    fontSize: 30,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(25),
         children: [
-          Text("Personajes One Piece", style: tituloStyleText),
+          Text('Personajes', style: tituloStyleText,),
           Row(
             children: [
-              Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "assets/p1.jpg",
-                      width: 200,
-                      height: 110,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
+              _personajeLista('p1','Titulo', 'subtitulo'),
+              SizedBox(width: 15,),
+              _personajeLista('p2','Titulo', 'subtitulo'),
+              SizedBox(width: 15,),
+              _personajeLista('p3','Titulo', 'subtitulo'),
             ],
-          ),
+          )
         ],
       ),
     );
+  }
+
+  Widget _personajeLista(String imagen, String titulo, String subtitulo) {
+
+    double anchoPantalla = MediaQuery.of(context).size.width - 50;
+    return Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    "assets/$imagen.jpg",
+                    width: anchoPantalla * 0.3,
+                    height: 110,
+                    fit: BoxFit.cover,
+                    ),
+                ),
+                SizedBox(height: 15,),
+                RichText(
+                  text: TextSpan(
+                    text: titulo,
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                    children: [
+                      TextSpan(
+                    text: subtitulo,
+                    style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w300),
+                  ),
+                    ]
+                  ),
+                  
+                  )
+              ],
+            );
   }
 }
