@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "632388232096",
+    "project_id": "fir-flutterprimer",
+    "storage_bucket": "fir-flutterprimer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632388232096:android:b369917bd7427d5053fac5",
+        "android_client_info": {
+          "package_name": "com.example.firebase_flutter_dam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7jNIG_k7BGh_QhnEENYmK5krKIzn9bZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
