@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_flutter_dam/services/auth_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -12,11 +13,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String pass = "";
   String nombre = "";
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passController = TextEditingController();
-  TextEditingController _nombreController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+  final TextEditingController _nombreController = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
+  final _authService = AuthService();
+  bool _isLoading = false;
+  @override
+  void dispose() {
+    _nombreController.dispose();
+    _emailController.dispose();
+    _passController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _signUp() async {
+    if (!_formkey.currentState!.validate()) return;
+    setState(() => _isLoading = true);
+    try {
+      _authService.registroConEmailYContrasenia(
+        email: _emailController.text.trim(),
+        password: _passController.text,
+      );
+      //Mostramos un ,mensaje de exito
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Usuario creado correctamente"),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+      Navigator.pop(context);
+
+      //No necesitamos navegar manualmente, el streambuilder lo hace automaticamente
+    } catch (e) {
+      //Mostramos mensaje al usuario
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +121,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             fontSize: 16,
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Por favor ingresa un correo";
+                          } else if (!value.contains('@')) {
+                            return "Ingresa un email valido";
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     SizedBox(height: 20),
@@ -100,32 +152,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             fontSize: 16,
                           ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Por favor ingresa una contraseña";
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.symmetric(
-                          vertical: 13,
-                          horizontal: 30,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF273671),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Registrar Usuario",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                      onTap: _isLoading ? null : _signUp,
+                      child: _isLoading
+                          ? SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(),
+                            )
+                          : Container(
+                              width: MediaQuery.of(context).size.width,
+                              padding: EdgeInsets.symmetric(
+                                vertical: 13,
+                                horizontal: 30,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Color(0xFF273671),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Registrar Usuario",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
                     ),
                     SizedBox(height: 20),
                     Row(
