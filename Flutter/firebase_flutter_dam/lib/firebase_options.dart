@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -48,6 +39,16 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyD3o_SZGPwKTA9JKVXqZGubLal6o6gLAtE',
+    appId: '1:632388232096:web:c14b6cee4d58f44153fac5',
+    messagingSenderId: '632388232096',
+    projectId: 'fir-flutterprimer',
+    authDomain: 'fir-flutterprimer.firebaseapp.com',
+    storageBucket: 'fir-flutterprimer.firebasestorage.app',
+    measurementId: 'G-TJEKQ8N2FH',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD7jNIG_k7BGh_QhnEENYmK5krKIzn9bZE',
@@ -63,6 +64,30 @@ class DefaultFirebaseOptions {
     messagingSenderId: '632388232096',
     projectId: 'fir-flutterprimer',
     storageBucket: 'fir-flutterprimer.firebasestorage.app',
+    androidClientId: '632388232096-o0lvji6dvlr8kfprui3kmd4ucln9qte8.apps.googleusercontent.com',
+    iosClientId: '632388232096-ftbrleg59et659411oi7sf8d58shnbhq.apps.googleusercontent.com',
     iosBundleId: 'com.example.firebaseFlutterDam',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyChXlALASHJ9PhdxpIoIcL4epCr0kIFjWs',
+    appId: '1:632388232096:ios:213acd7b964ce30953fac5',
+    messagingSenderId: '632388232096',
+    projectId: 'fir-flutterprimer',
+    storageBucket: 'fir-flutterprimer.firebasestorage.app',
+    androidClientId: '632388232096-o0lvji6dvlr8kfprui3kmd4ucln9qte8.apps.googleusercontent.com',
+    iosClientId: '632388232096-ftbrleg59et659411oi7sf8d58shnbhq.apps.googleusercontent.com',
+    iosBundleId: 'com.example.firebaseFlutterDam',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyD3o_SZGPwKTA9JKVXqZGubLal6o6gLAtE',
+    appId: '1:632388232096:web:efc2f7059122f0fc53fac5',
+    messagingSenderId: '632388232096',
+    projectId: 'fir-flutterprimer',
+    authDomain: 'fir-flutterprimer.firebaseapp.com',
+    storageBucket: 'fir-flutterprimer.firebasestorage.app',
+    measurementId: 'G-PGYH8BF5NE',
+  );
+
 }

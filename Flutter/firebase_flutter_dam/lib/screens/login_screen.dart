@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter_dam/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   String email = "";
   String pass = "";
 
@@ -29,28 +29,40 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _signIn() async {
     if (!_formkey.currentState!.validate()) return;
-    setState(()=> _isLoading = true );
+    setState(() => _isLoading = true);
 
     try {
       _authService.iniciarSesion(
-        email: _emailController.text.trim(), 
+        email: _emailController.text.trim(),
         password: _passController.text,
-        );
+      );
       // No necesitamos navegar manualmente, el Streambuilder lo hace automaticamente
     } catch (e) {
       // Mostramos mensaje al usuario
-      if(mounted){
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(e.toString()),
-            backgroundColor: Colors.red,
-            )
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
         );
       }
     } finally {
-      if (mounted){
-        setState(()=> _isLoading = false );
+      if (mounted) {
+        setState(() => _isLoading = false);
       }
+    }
+  }
+
+  Future<void> _logueoConGoogle() async {
+    setState(() => _isLoading = true);
+    try {
+      final UserCredential = await _authService.loginConGoogle();
+      if (UserCredential != null) {
+        //Aqui nuestro stream lo detectará automaticamente
+        print("Usuario logueado con google correctamente");
+      }
+    } catch (e) {
+      throw FirebaseAuthException(code: "Ha habido un error con google");
+    } finally {
+      setState(() => _isLoading = false);
     }
   }
 
@@ -63,9 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: Image.asset("assets/car.PNG", fit: BoxFit.cover,),
+              child: Image.asset("assets/car.PNG", fit: BoxFit.cover),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 30),
             Padding(
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Form(
@@ -79,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEDf0f8),
-                        borderRadius: BorderRadius.circular(30)
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       child: TextFormField(
                         controller: _emailController,
@@ -89,10 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintStyle: TextStyle(
                             color: Color(0xFFB2B7BF),
                             fontSize: 18,
-                          )
+                          ),
                         ),
                         validator: (value) {
-                          if ( value == null || value.isEmpty ){
+                          if (value == null || value.isEmpty) {
                             return 'Por favor  ingresa un correo';
                           }
                           if (!value.contains('@')) {
@@ -102,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 30),
                     Container(
                       padding: EdgeInsets.symmetric(
                         vertical: 2.0,
@@ -110,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEDf0f8),
-                        borderRadius: BorderRadius.circular(30)
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       child: TextFormField(
                         obscureText: true,
@@ -121,10 +133,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintStyle: TextStyle(
                             color: Color(0xFFB2B7BF),
                             fontSize: 18,
-                          )
+                          ),
                         ),
                         validator: (value) {
-                          if ( value == null || value.isEmpty ){
+                          if (value == null || value.isEmpty) {
                             return 'Por favor ingresa una contraseña';
                           }
                           if (value.length < 6) {
@@ -134,18 +146,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 30),
                     GestureDetector(
                       onTap: _isLoading ? null : _signIn,
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.symmetric(
                           vertical: 13,
-                          horizontal: 30
+                          horizontal: 30,
                         ),
                         decoration: BoxDecoration(
                           color: Color(0xFF273671),
-                          borderRadius: BorderRadius.circular(30)
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
                           child: Text(
@@ -153,40 +165,39 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
-                              fontWeight: .w500
+                              fontWeight: .w500,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () {
-                        
-                      },
-                      child: Text('¿Contraseña olvidada?',
-                      style: TextStyle(
-                        color: Color(0xFF8c8e98),
-                        fontSize: 18,
-                        fontWeight: .w500, 
-                      ),),
+                      onTap: () {},
+                      child: Text(
+                        '¿Contraseña olvidada?',
+                        style: TextStyle(
+                          color: Color(0xFF8c8e98),
+                          fontSize: 18,
+                          fontWeight: .w500,
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 40,),
-                    Text('O Logueate con:',
+                    SizedBox(height: 40),
+                    Text(
+                      'O Logueate con:',
                       style: TextStyle(
                         color: Color(0xFF273671),
                         fontSize: 20,
-                        fontWeight: .w500, 
+                        fontWeight: .w500,
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: .center,
                       children: [
                         GestureDetector(
-                          onTap: () {
-                            
-                          },
+                          onTap: _isLoading ? null : _logueoConGoogle,
                           child: Image.asset(
                             'assets/google.png',
                             height: 45,
@@ -194,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(width: 30,),
+                        SizedBox(width: 30),
                         GestureDetector(
                           child: Image.asset(
                             'assets/apple1.png',
@@ -205,39 +216,38 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: .center,
                       children: [
-                        Text('¿Aún no tienes cuenta?',
-                            style: TextStyle(
-                              color: Color(0xFF8c8e98),
-                              fontSize: 16,
-                              fontWeight: .w500, 
-                            ),
+                        Text(
+                          '¿Aún no tienes cuenta?',
+                          style: TextStyle(
+                            color: Color(0xFF8c8e98),
+                            fontSize: 16,
+                            fontWeight: .w500,
+                          ),
                         ),
-                        SizedBox(width: 5,),
+                        SizedBox(width: 5),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
-                              context, 
-                              '/register'
-                            );
+                            Navigator.pushNamed(context, '/register');
                           },
-                          child: Text('Registrar Usuario',
-                              style: TextStyle(
-                                color: Color(0xFF273671),
-                                fontSize: 18,
-                                fontWeight: .w500, 
-                              ),
+                          child: Text(
+                            'Registrar Usuario',
+                            style: TextStyle(
+                              color: Color(0xFF273671),
+                              fontSize: 18,
+                              fontWeight: .w500,
+                            ),
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
