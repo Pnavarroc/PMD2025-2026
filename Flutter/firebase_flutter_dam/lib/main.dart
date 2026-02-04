@@ -5,6 +5,7 @@ import 'package:firebase_flutter_dam/screens/home_screen.dart';
 import 'package:firebase_flutter_dam/screens/login_screen.dart';
 import 'package:firebase_flutter_dam/screens/register_screen.dart';
 import 'package:firebase_flutter_dam/screens/seleccionar_pantalla_screen.dart';
+import 'package:firebase_flutter_dam/screens/storage_screen.dart';
 import 'package:firebase_flutter_dam/screens/tareas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/tareas': (context) => TareasScreen(),
         '/addTarea': (context) => AddTareaScreen(),
+        '/storage': (context) => StorageScreen(),
       },
     );
   }

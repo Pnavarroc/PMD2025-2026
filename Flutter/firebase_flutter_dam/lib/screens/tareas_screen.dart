@@ -66,9 +66,60 @@ class _TareasScreenState extends State<TareasScreen> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
+              String docId = document.id;
               return ListTile(
                 title: Text(data['titulo']),
                 subtitle: Text(data['descripcion']),
+                trailing: Row(
+                  mainAxisSize: .min,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        //Boton editar
+                        Navigator.pushNamed(
+                          context,
+                          '/addTarea',
+                          arguments: {
+                            'id': docId,
+                            'titulo': data['titulo'],
+                            'descripcion': data['descripcion'],
+                          },
+                        );
+                      },
+                      icon: Icon(Icons.edit, color: Colors.blue),
+                    ),
+                    IconButton(
+                      onPressed: () async {
+                        final shoulDelete = await showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog.adaptive(
+                            title: Text(
+                              "¿Estás seguro de querer eliminar esta tarea?",
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: Text("Cancelar"),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: Text("Eliminar"),
+                              ),
+                            ],
+                          ),
+                        );
+                        if (shoulDelete == true) {
+                          //Eliminamos la tarea de firestore
+                          await FirebaseFirestore.instance
+                              .collection("Tareas")
+                              .doc(docId)
+                              .delete();
+                        }
+                      },
+                      icon: Icon(Icons.delete, color: Colors.red),
+                    ),
+                  ],
+                ),
               );
             }).toList(),
           );
