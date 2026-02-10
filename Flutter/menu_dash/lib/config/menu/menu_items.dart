@@ -42,15 +42,15 @@ class MenuItems {
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[7],
-      icono: Icons.snowmobile,
-      texto: 'Opcion 7',
-      screenName: 'opcion7',
+      icono: Icons.settings,
+      texto: 'Settings',
+      screenName: 'settings',
     ),
     OptionMenuItem(
       color: AppTheme.listaColores[8],
-      icono: Icons.move_to_inbox_outlined,
-      texto: 'Opcion 8',
-      screenName: 'opcion8',
+      icono: Icons.map,
+      texto: 'Mapas',
+      screenName: 'mapas',
     ),
   ];
 }

@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:menu_dash/config/menu/menu_items.dart';
+import 'package:menu_dash/config/preferences/preferencias.dart';
 import 'package:menu_dash/widgets/menu_item.dart';
 import 'package:menu_dash/widgets/option_menu_item.dart';
 
-class MenuScreen extends StatelessWidget {
-   
+class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
-  
+
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
-
-    final List<OptionMenuItem> _listaOpcionesMenu = MenuItems().listaOpcionesMenu;
+    final List<OptionMenuItem> _listaOpcionesMenu =
+        MenuItems().listaOpcionesMenu;
 
     return Scaffold(
-      //appBar: AppBar(title: Text('Menu'),), 
+      appBar: AppBar(title: Text('Bienvenido ' + Preferencias.nombre)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.builder(
@@ -22,16 +27,14 @@ class MenuScreen extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 8.0,
-            mainAxisSpacing: 8.0
-            ), 
-          itemBuilder: ( context, index ){
-
+            mainAxisSpacing: 8.0,
+          ),
+          itemBuilder: (context, index) {
             final OptionMenuItem _opcion = _listaOpcionesMenu[index];
             return MenuItem(opcion: _opcion);
-          }
-          ),
-      )
+          },
+        ),
+      ),
     );
   }
 }
-
